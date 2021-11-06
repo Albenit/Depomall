@@ -16,3 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+route::get('/header', function (){
+    return view('partials/header');
+});
+route::get('/dashboard', function (){
+    return view('layouts/dashboard');
+});
