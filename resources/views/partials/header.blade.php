@@ -1,27 +1,27 @@
 <head>
-    @extends('partials/bootstrap')
-    <title>@yield('title')</title>
-</head>
+@extends('partials/bootstrap')
+
 @section("sidebar")
 
-
+</head>
     <nav class="navbar navbar-expand-lg navbar-light bg-light" >
         <ul class="navbar-nav">
             <li class="nav-item">
-                <div class="logo logo-width-1 logo-hm3">
-                    <span>Depomall</span>
-                </div>
+              <b><a class="nav-link" href="#">Depomall</a></b>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="">Quiz</a>
+                <a class="nav-link" href="#">Ballina</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="">My Library</a>
+                <a class="nav-link" href="#">eee</a>
             </li>
+
         </ul>
+
+
     </nav>
     <main>
         @yield('content')
     </main>
 
-@show
+

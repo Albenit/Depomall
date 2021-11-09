@@ -20,5 +20,5 @@ route::get('/header', function (){
     return view('partials/header');
 });
 route::get('/dashboard', function (){
-    return view('layouts/dashboard');
+    return view('layouts/index');
 });
