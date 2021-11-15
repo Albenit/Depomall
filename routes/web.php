@@ -16,9 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-route::get('/header', function (){
-    return view('partials/header');
+Route::get('/dashboard', function (){
+    return view('layouts/dashboard');
 });
-route::get('/dashboard', function (){
-    return view('layouts/index');
-});
+
+Route::get('/produktet',function (){
+    return view('layouts/produktet');
+})->name('produktet');
+
+Route::post('/rexhistro_produktin','App\Http\Controllers\ProduktiController@store')->name('rexhistro_produktin');
