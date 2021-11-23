@@ -1,4 +1,4 @@
- <?php
+<?php
 
 use Illuminate\Support\Facades\Route;
 
@@ -16,10 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/dashboard', function (){
+
+Route::get('/dashboard', function () {
     return view('layouts/dashboard');
-});
+})->middleware(['auth'])->name('dashboard');
 
-Route::get('/produktet','App\Http\Controllers\ProduktiController@index')->name('produktet');
+require __DIR__.'/auth.php';
 
-Route::post('/rexhistro_produktin','App\Http\Controllers\ProduktiController@store')->name('rexhistro_produktin');
+Route::get('/produktet/{id}','App\Http\Controllers\ProduktiController@index')->middleware(['auth'])->name('produktet');
+
+Route::post('/rexhistro_produktin','App\Http\Controllers\ProduktiController@store')->middleware(['auth'])->name('rexhistro_produktin');

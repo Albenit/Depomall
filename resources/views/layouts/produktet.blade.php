@@ -7,7 +7,14 @@
         <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                 class="fas fa-download fa-sm text-white-50"></i> Rexhistro Produkt</a>
     </div>
+    @if(\Illuminate\Support\Facades\Session::has(('success')))
 
+        <div class="alert alert-success alert-dismissible">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Sukses !</strong>   {!! \Illuminate\Support\Facades\Session::get('success')!!}
+        </div>
+
+    @endif
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -18,8 +25,10 @@
                     </button>
                 </div>
                 <div class="modal-body">
+
                     <form method="POST" action="{{route('rexhistro_produktin')}}">
                         @csrf
+                        <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Emri Produktit</label>
                             <input name="emri_produktit" type="text" class="form-control" id="emri_produktit" aria-describedby="emailHelp" placeholder="Emri Produktit">
