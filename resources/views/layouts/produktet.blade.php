@@ -2,7 +2,7 @@
 @extends('layouts/dashboard')
 
 @section('content')
-    <div style="margin-left: 900px" data-toggle="modal" data-target="#exampleModal"
+    <div style="margin-left: 20px" data-toggle="modal" data-target="#exampleModal"
          class="d-sm-flex align-items-center justify-content-between mb-4">
         <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                 class="fas fa-download fa-sm text-white-50"></i> Rexhistro Produkt</a>
@@ -58,16 +58,60 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td><button class="btn-outline-success">Dalje</button></td>
-        </tr>
+                @foreach($produktet as $produkti)
+                <tr>
+                    <th scope="row">{{$produkti->id}}</th>
+                    <td>{{$produkti->emri_produktit}}</td>
+                    <td>{{$produkti->nr_serik}}</td>
+                    <td>{{$produkti->sasia}} pcs</td>
+                    <td>{{$produkti->qmimi}} $</td>
+                    <td> <div data-toggle="modal" data-target="#shitjeModal" data-idUpdate="{{$produkti->id}}">
+                            <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"  > Shitje </a>
+                        </div></td>
+                </tr>
+                @endforeach
         </tbody>
     </table>
+    <div class="modal fade" id="shitjeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Shitja Produktit</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <span>Ne Stok: </span><br>
+                        <span>Qmimi per njesi: 3.87$</span>
+                    </div>
+                    <form method="POST">
+                        @csrf
+                        <hr>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Sasia per shitje</label>
+                            <input name="sasia_shitje" type="number" class="form-control" id="sasia_shitje" placeholder="Sasia">
+                        </div>
+                        <div class="modal-footer">
+                            <input type="submit" class="btn btn-primary" value="Vazhdo">
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
 
 @endsection
+
+<script type="text/javascript">
+    $(function () {
+        $(".identifyingClass").click(function () {
+            let my_id_value = $(this).data('id');
+            $(".modal-body #hiddenValue").val(my_id_value);
+        })
+    });
+</script>
 </html>

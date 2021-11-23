@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 use Illuminate\Support\Facades\Route;
 
@@ -20,8 +20,6 @@ Route::get('/dashboard', function (){
     return view('layouts/dashboard');
 });
 
-Route::get('/produktet',function (){
-    return view('layouts/produktet');
-})->name('produktet');
+Route::get('/produktet','App\Http\Controllers\ProduktiController@index')->name('produktet');
 
 Route::post('/rexhistro_produktin','App\Http\Controllers\ProduktiController@store')->name('rexhistro_produktin');
