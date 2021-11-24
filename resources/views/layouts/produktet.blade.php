@@ -59,8 +59,8 @@
         <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Id No</th>
             <th scope="col">Emri Produktit</th>
+            <th scope="col">Nr Serik</th>
             <th scope="col">Sasia</th>
             <th scope="col">Qmimi</th>
             <th scope="col">Aksioni</th>
@@ -74,9 +74,11 @@
                     <td>{{$produkti->nr_serik}}</td>
                     <td>{{$produkti->sasia}} pcs</td>
                     <td>{{$produkti->qmimi}} $</td>
-                    <td> <div data-toggle="modal" data-target="#shitjeModal" data-idUpdate="{{$produkti->id}}">
-                            <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"  > Shitje </a>
-                        </div></td>
+                    <td> <div>
+                            <a href="#" class="btn btn-success">Shitje</a>
+                            <a href="{{route('porosit',['id'=> $produkti->id])}}" class="btn btn-info">Porosit</a>
+                        </div>
+                    </td>
                 </tr>
                 @endforeach
         </tbody>

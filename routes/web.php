@@ -23,6 +23,10 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/produktet/{id}','App\Http\Controllers\ProduktiController@index')->middleware(['auth'])->name('produktet');
+Route::get('/produktet','App\Http\Controllers\ProduktiController@index')->middleware(['auth'])->name('produktet');
 
 Route::post('/rexhistro_produktin','App\Http\Controllers\ProduktiController@store')->middleware(['auth'])->name('rexhistro_produktin');
+
+Route::get('/porosit/{id}',[\App\Http\Controllers\PorositController::class,'index'])->name('porosit');
+
+Route::post('/ruajporosin',[\App\Http\Controllers\PorositController::class,'store'])->name('ruajporosin');
