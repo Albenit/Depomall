@@ -1,6 +1,6 @@
 <html>
 @extends('layouts/dashboard')
-
+@section('title', 'Produktet')
 @section('content')
     <div style="margin-left: 20px" data-toggle="modal" data-target="#exampleModal"
          class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -56,7 +56,7 @@
     </div>
 
     <table class="table table-striped">
-        <thead>
+        <thead class="thead-dark">
         <tr>
             <th scope="col">#</th>
             <th scope="col">Emri Produktit</th>
@@ -76,53 +76,14 @@
                     <td>{{$produkti->qmimi}} $</td>
                     <td> <div>
                             <a href="#" class="btn btn-success">Shitje</a>
-                            <a href="{{route('porosit',['id'=> $produkti->id])}}" class="btn btn-info">Porosit</a>
+                            <a href="{{route('porositprod',['id'=> $produkti->id])}}" class="btn btn-info">Porosit</a>
                         </div>
                     </td>
                 </tr>
                 @endforeach
         </tbody>
     </table>
-    <div class="modal fade" id="shitjeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Shitja Produktit</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div>
-                        <span>Ne Stok: </span><br>
-                        <span>Qmimi per njesi: 3.87$</span>
-                    </div>
-                    <form method="POST">
-                        @csrf
-                        <hr>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Sasia per shitje</label>
-                            <input name="sasia_shitje" type="number" class="form-control" id="sasia_shitje" placeholder="Sasia">
-                        </div>
-                        <div class="modal-footer">
-                            <input type="submit" class="btn btn-primary" value="Vazhdo">
-                        </div>
-                    </form>
-
-                </div>
-
-            </div>
-        </div>
-    </div>
 
 @endsection
 
-<script type="text/javascript">
-    $(function () {
-        $(".identifyingClass").click(function () {
-            let my_id_value = $(this).data('id');
-            $(".modal-body #hiddenValue").val(my_id_value);
-        })
-    });
-</script>
 </html>

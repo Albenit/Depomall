@@ -27,6 +27,8 @@ Route::get('/produktet','App\Http\Controllers\ProduktiController@index')->middle
 
 Route::post('/rexhistro_produktin','App\Http\Controllers\ProduktiController@store')->middleware(['auth'])->name('rexhistro_produktin');
 
-Route::get('/porosit/{id}',[\App\Http\Controllers\PorositController::class,'index'])->name('porosit');
+Route::get('/porositprod/{id}',[\App\Http\Controllers\PorositController::class,'index'])->name('porositprod');
 
 Route::post('/ruajporosin',[\App\Http\Controllers\PorositController::class,'store'])->name('ruajporosin');
+
+Route::get('/porosit',[\App\Http\Controllers\PorositController::class,'show'])->name('porosit');

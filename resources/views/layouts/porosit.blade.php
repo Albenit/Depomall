@@ -1,41 +1,47 @@
 <html>
-@extends('partials/bootstrap')
-<section class="vh-100" style="background-color: #f8f8f8;">
-    <div class="container py-5 h-100">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                <div class="card shadow-2-strong" style="border-radius: 1rem;">
-                    <div class="card-body p-5 text-center">
+@extends('layouts/dashboard')
+@section('title','Porosit')
+@section('content')
+    @if(\Illuminate\Support\Facades\Session::has(('success')))
 
-                        <h3 class="mb-5">Porosit Produktin</h3>
-                        <form method="POST" action="{{route('ruajporosin')}}">
-                            @csrf
-                            <input type="hidden" value="{{$id}}">
-                        <div class="form-outline mb-4">
-                            <input type="number" name="nr_porosis" class="form-control" placeholder="Numri Porosis"/>
-                        </div>
-                        <div class="form-outline mb-4">
-                            <input type="text" name="emri_klientit" class="form-control" placeholder="Emri Klientit" />
-                        </div>
-                        <div class="form-outline mb-4">
-                            <input type="text" name="nr_telefonit" class="form-control" placeholder="Numri Telefonit" />
-                        </div>
-                        <div class="form-outline mb-4">
-                            <input type="text" name="emri_produktit" class="form-control" placeholder="Emri Produktit" />
-                        </div>
-                        <div class="form-outline mb-4">
-                            <input type="number" name="sasia_produktit" class="form-control" placeholder="Sasia Produktit" />
-                        </div>
-                        <div class="form-outline mb-4">
-                            <input type="number" name="qmimi_produkit" class="form-control" placeholder="Qmimi Produktit" />
-                        </div>
-                        <button class="btn btn-primary btn-lg btn-block" type="submit">Ruaj Porosin</button>
-                        <hr class="my-4">
-                        </form>
-                    </div>
-                </div>
-            </div>
+        <div class="alert alert-success alert-dismissible">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Sukses !</strong>   {!! \Illuminate\Support\Facades\Session::get('success')!!}
         </div>
-    </div>
-</section>
+
+    @endif
+
+    <table class="table table-striped ">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Emri Klientit</th>
+            <th scope="col">Nr Telefonit</th>
+            <th scope="col">Nr Porosis</th>
+            <th scope="col">Emri Produktit</th>
+            <th scope="col">Sasia</th>
+            <th scope="col">Qmimi</th>
+            <th scope="col">Qmimi Total</th>
+            <th scope="col">Aksioni</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach($porosit as $porosia)
+            <tr>
+                <th scope="row">{{$porosia->emri_klientit}}</th>
+                <td>{{$porosia->nr_telefonit}}</td>
+                <td>{{$porosia->nr_porosis}}</td>
+                <td>{{$porosia->emri_produktit}}</td>
+                <td>{{$porosia->sasia}} pcs</td>
+                <td>{{$porosia->qmimi_produktit}} $</td>
+                <td>{{$porosia->qmimi_total}} $</td>
+                <td> <div>
+                        <a href="#" class="btn btn-success">Perfundo</a>
+                    </div>
+                </td>
+            </tr>
+        @endforeach
+        </tbody>
+    </table>
+
+    @endsection
 </html>

@@ -15,6 +15,9 @@ class User extends Authenticatable
     public function produktet(){
         return $this->hasMany(Produkti::class);
     }
+    public function porosit(){
+        return $this->hasMany(Porosit::class);
+    }
 
     /**
      * The attributes that are mass assignable.
