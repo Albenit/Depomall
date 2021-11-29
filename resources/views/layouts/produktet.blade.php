@@ -75,7 +75,7 @@
                     <td>{{$produkti->sasia}} pcs</td>
                     <td>{{$produkti->qmimi}} $</td>
                     <td> <div>
-                            <a href="#" class="btn btn-success">Shitje</a>
+                            <a href="{{route('shitprod',['id'=>$produkti->id])}}" class="btn btn-success">Shitje</a>
                             <a href="{{route('porositprod',['id'=> $produkti->id])}}" class="btn btn-info">Porosit</a>
                         </div>
                     </td>

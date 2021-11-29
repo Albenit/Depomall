@@ -20,7 +20,11 @@
                                 <input type="number" name="qmimi_produkit" class="form-control" value="{{$porosiaData->qmimi }}" readonly />
                             </div>
                             <div class="form-outline mb-4">
-                                <label>Sasia Produktit</label>
+                                <label>Sasia Ne Stok</label>
+                                <input type="number" class="form-control" value="{{$porosiaData->sasia }}" readonly />
+                            </div>
+                            <div class="form-outline mb-4">
+                                <label>Sasia Per Porosi</label>
                                 <input type="number" name="sasia_produktit" class="form-control" />
                             </div>
                         <div class="form-outline mb-4">

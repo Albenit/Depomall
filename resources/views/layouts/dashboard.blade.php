@@ -78,8 +78,8 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#">
-                Pagesat
+            <a class="nav-link collapsed" href="{{route('shitjet')}}">
+                Shitjet
             </a>
         </li>
 

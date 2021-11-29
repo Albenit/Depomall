@@ -2,14 +2,6 @@
 @extends('layouts/dashboard')
 @section('title','Porosit')
 @section('content')
-    @if(\Illuminate\Support\Facades\Session::has(('success')))
-
-        <div class="alert alert-success alert-dismissible">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-            <strong>Sukses !</strong>   {!! \Illuminate\Support\Facades\Session::get('success')!!}
-        </div>
-
-    @endif
 
     <table class="table table-striped ">
         <thead class="thead-dark">
@@ -35,7 +27,7 @@
                 <td>{{$porosia->qmimi_produktit}} $</td>
                 <td>{{$porosia->qmimi_total}} $</td>
                 <td> <div>
-                        <a href="#" class="btn btn-success">Perfundo</a>
+                        <a href="{{route('perfundoporosin',['id'=>$porosia->id])}}" class="btn btn-success">Perfundo</a>
                     </div>
                 </td>
             </tr>

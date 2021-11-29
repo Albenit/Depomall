@@ -27,8 +27,16 @@ Route::get('/produktet','App\Http\Controllers\ProduktiController@index')->middle
 
 Route::post('/rexhistro_produktin','App\Http\Controllers\ProduktiController@store')->middleware(['auth'])->name('rexhistro_produktin');
 
-Route::get('/porositprod/{id}',[\App\Http\Controllers\PorositController::class,'index'])->name('porositprod');
+Route::get('/porositprod/{id}',[\App\Http\Controllers\PorositController::class,'index'])->middleware(['auth'])->name('porositprod');
 
-Route::post('/ruajporosin',[\App\Http\Controllers\PorositController::class,'store'])->name('ruajporosin');
+Route::post('/ruajporosin',[\App\Http\Controllers\PorositController::class,'store'])->middleware(['auth'])->name('ruajporosin');
 
-Route::get('/porosit',[\App\Http\Controllers\PorositController::class,'show'])->name('porosit');
+Route::get('/porosit',[\App\Http\Controllers\PorositController::class,'show'])->middleware(['auth'])->name('porosit');
+
+Route::get('/perfundoporosin/{id}',[\App\Http\Controllers\PorositController::class,'updateAndDelete'])->middleware('auth')->name('perfundoporosin');
+
+Route::get('/shitprod/{id}',[\App\Http\Controllers\ShitjetController::class,'index'])->middleware('auth')->name('shitprod');
+
+Route::post('/ruajshitjen',[\App\Http\Controllers\ShitjetController::class,'updateAndStore'])->middleware('auth')->name('ruajshitjen');
+
+Route::get('/shitjet',[\App\Http\Controllers\ShitjetController::class,'show'])->middleware('auth')->name('shitjet');
